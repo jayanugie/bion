@@ -7,31 +7,25 @@ int main()
     int iJumKoin = 6;
     int koin[] = {0, 1, 5, 10, 25, 50, 100};
     int iMaxCari = 146;
-    int C[147] = {0}; // Inisialisasi array C dengan 0
+    long long C[147] = {0}; // menggunakan long long untuk mengatasi potensi integer overflow
 
-    for (int i = 1; i <= iMaxCari; ++i)
+    for (int i = 0; i <= iJumKoin; ++i)
     {
         C[i] = 0;
     }
 
+    C[0] = 1;
+
     for (int j = 1; j <= iJumKoin; ++j)
     {
-        C[koin[j]] = 1;
-    }
-
-    for (int n = 1; n <= iMaxCari; ++n)
-    {
-        for (int j = 1; j <= iJumKoin; ++j)
+        for (int n = koin[j]; n <= iMaxCari; ++n)
         {
-            if ((n - koin[j]) >= 0)
-            {
-                C[n] = C[n] + C[n - koin[j]];
-            }
+            C[n] += C[n - koin[j]];
         }
     }
 
     bool bBisaDicari;
-    int iJumKemungkinan;
+    long long iJumKemungkinan;
 
     if (C[iNilaiCari] > 0)
     {
@@ -46,7 +40,7 @@ int main()
     // Tampilkan hasil
     if (bBisaDicari)
     {
-        printf("Nilai %d bisa dicari dan memiliki %d kemungkinan.\n", iNilaiCari, iJumKemungkinan);
+        printf("Nilai %d bisa dicari dan memiliki %lld kemungkinan.\n", iNilaiCari, iJumKemungkinan);
     }
     else
     {
