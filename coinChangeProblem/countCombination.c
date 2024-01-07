@@ -37,7 +37,7 @@ int main()
         bBisaDicari = false;
     }
 
-    // Tampilkan hasil
+    // output
     if (bBisaDicari)
     {
         printf("Nilai %d bisa dicari dan memiliki %lld kemungkinan.\n", iNilaiCari, iJumKemungkinan);
